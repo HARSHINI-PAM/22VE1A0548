@@ -4,6 +4,11 @@ console.log("Loaded MongoDB URI:", process.env.MONGODB_URI);
 const app = require('./app');
 const mongoose = require('mongoose');
 
+const Log = require('./middleware/logger');
+
+Log("backend", "info", "startup", "Server started successfully");
+Log("backend", "error", "handler", "received string, expected bool");
+Log("backend", "fatal", "db", "Critical database connection failure");
 
 mongoose.connect(process.env.MONGODB_URI, {
     dbName: "Urlshortener",
